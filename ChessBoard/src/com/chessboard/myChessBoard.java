@@ -1,10 +1,14 @@
 package com.chessboard;
 
 
-public class myChessBoard{
-    public  int Board[][] = new int[32][32];
-    private int tile = 0;
-    public void ChessBoard(int tr,int tc, int dr,int dc,int size){
+public class myChessBoard{//算法核心类
+    public  int Board[][];//棋盘二维数组
+    private int tile;//骨牌号，用于递归
+    myChessBoard(int size){//构造函数
+        Board = new int[size][size];
+        tile = 0;
+    }
+    public void ChessBoard(int tr,int tc, int dr,int dc,int size){//参考书上代码
         if(size == 1) return;
         int t = tile++,s = size/2;
         if(dr<tr+s&&dc<tc+s) ChessBoard(tr, tc, dr, dc, s);
@@ -28,13 +32,7 @@ public class myChessBoard{
             ChessBoard(tr+s, tc+s, tr+s, tc+s, s);
         }
     }
-    public void setBoard(int size){
-        Board = new int[size][size];
-    }
-    public void clearhistory(){
-        tile = 0;
-    }
     public static void main(String []args){
-        chessGUI board = new chessGUI();
+        new ChessBoardGUI();//打开GUI
     }
 }
