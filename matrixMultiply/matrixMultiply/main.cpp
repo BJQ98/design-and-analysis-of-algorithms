@@ -70,6 +70,7 @@ int main() {
         cout<<"Case "<<count++<<endl;
         cout<<m[1][n]<<" ";//最少乘法次数
         Traceback(1, n, s, Trace_count);//追踪断点位置
+        cout<<endl;
         for (int i = 0; i <= n; i++){//释放空间，防止内存泄漏
             delete[] m[i];
             delete[] s[i];
