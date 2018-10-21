@@ -27,8 +27,8 @@ int main()
     for(int j = 0;j<num;j++){
         int n;
         cin>>n;
-        string res[n+1];
-        huffman_node nd[n+1];
+        string res[n+1];        //编码字符串
+        huffman_node nd[n+1];   //输入顺序的结点排列
         priority_queue<huffman_node> min_heap;//构建最小堆
         for(int i=1,w;i<=n;i++){
             huffman_node temp;//利用temp来进行建堆
@@ -49,7 +49,7 @@ int main()
             huffman_node t;      //新的子树
             t.val = x.val + y.val;      //合并权值
             t.id = cur_id++;        //用更大的id
-            for(int i=0,sz = (int)x.id_hist.size() ;i < sz ;i++){          //”右子树编码
+            for(int i=0,sz = (int)x.id_hist.size() ;i < sz ;i++){          //右子树编码
                 int id = x.id_hist[i];          //找到当前结点所有的子结点
                 res[id] += '1';                 //进行右子树‘1’的编码
                 t.id_hist.push_back(id);         //合并y叶子结点，记录所有子叶子结点id
